@@ -1,0 +1,23 @@
+Certainly! Let's break down the Spark execution plan you've provided:
+
+1. **Generate (Explode)**:
+   - The `explode` function is applied to an array of columns. In this case, it operates on the columns `[count, mean, stddev, min, max]`.
+   - The result is a new row for each value in the array, with the exploded value and the original columns.
+   - The output schema includes the original columns (`circuitId`, `circuitRef`, etc.) along with the exploded values.
+
+2. **Project**:
+   - The `Project` operation selects specific columns from the input data.
+   - The output columns are derived using the `toprettystring` function, which converts values to human-readable strings.
+   - For example:
+     - `toprettystring(summary#253, Some(Asia/Calcutta))` converts the `summary` column to a readable string in the specified time zone.
+     - Similarly, other columns are transformed using `element_at` and `toprettystring`.
+
+3. **CollectLimit**:
+   - The `CollectLimit` operation limits the number of rows returned.
+   - In this case, it limits the output to 21 rows.
+
+4. **AdaptiveSparkPlan**:
+   - The `AdaptiveSparkPlan` is an adaptive execution plan that adjusts based on runtime statistics.
+   - The argument `isFinalPlan=true` indicates that this is the final optimized plan.
+
+Overall, this execution plan processes the input data, transforms columns, and limits the output. The use of functions like `toprettystring` ensures human-readable results. If you have any specific questions about a particular step, feel free to ask! 🚀🔍
