@@ -1,4 +1,29 @@
+https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?resource=download
+
+
+
+
+
 Certainly! Let's break down the Spark execution plan you've provided:
+Certainly! Let's break down the Spark execution plan you've provided:
+
+1. **Scan CSV (InMemoryFileIndex)**:
+   - The first step is reading data from a CSV file located at `file:/C:/Users/sheel/PycharmProjects/pyspark/venv/Data/circuits.csv`.
+   - The schema of the data includes columns like `circuitId`, `circuitRef`, `name`, `location`, `country`, `lat`, `lng`, `alt`, and `url`.
+
+2. **SortAggregate**:
+   - The `SortAggregate` operation performs aggregation functions on the input data.
+   - The aggregation functions include `partial_count`, `partial_avg`, `partial_stddev`, `partial_min`, and `partial_max`.
+   - These functions are applied to various columns (e.g., `circuitId`, `circuitRef`, etc.).
+   - The resulting attributes include statistics like count, sum, average, standard deviation, minimum, maximum, and more.
+
+3. **Results**:
+   - The final results include aggregated values for each column based on the specified functions.
+   - For example, `count#421L` represents the total count of rows, `avg#233` is the average value of `circuitId`, and so on.
+
+Overall, this execution plan reads data from the CSV file, aggregates it, and computes various statistics. If you have any specific questions about a particular step, feel free to ask! 🚀🔍
+
+
 
 1. **Generate (Explode)**:
    - The `explode` function is applied to an array of columns. In this case, it operates on the columns `[count, mean, stddev, min, max]`.
@@ -21,3 +46,28 @@ Certainly! Let's break down the Spark execution plan you've provided:
    - The argument `isFinalPlan=true` indicates that this is the final optimized plan.
 
 Overall, this execution plan processes the input data, transforms columns, and limits the output. The use of functions like `toprettystring` ensures human-readable results. If you have any specific questions about a particular step, feel free to ask! 🚀🔍
+
+
+
+
+
+
+File Ingestion - Races (Assignment)
+cav --> Read Data --> Transform Data --> Write Data --> parquet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
