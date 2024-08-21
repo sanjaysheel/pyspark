@@ -1,6 +1,6 @@
 https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?resource=download
-
-
+https://medium.com/@nishasreedharan/data-engineer-interview-preparation-complete-guide-98a9d16f6889
+https://datalemur.com/questions
 
 
 
