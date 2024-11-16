@@ -1,14 +1,14 @@
-from pyspark.sql.functions import *
-from pyspark.sql.types import *
-from pyspark.sql import SparkSession
-
-spark = SparkSession.builder.appName("SparkTest").config("spark.driver.memory", "1g").getOrCreate()
-
-
-df = spark.read.format("json").option("multiLine","true").load("C:\\Users\\sheel\\PycharmProjects\\pyspark\\Data\\races\\qualifying.json")
-df = df.withColumnRenamed("constructorId","constructor_Id").withColumnRenamed("driverId","driver_Id").withColumnRenamed("qualifyId","qualify_Id").withColumnRenamed("raceId","race_Id").withColumn("ingestion_date",current_timestamp())
-
-print(df.show())
+# from pyspark.sql.functions import *
+# from pyspark.sql.types import *
+# from pyspark.sql import SparkSession
+# 
+# spark = SparkSession.builder.appName("SparkTest").config("spark.driver.memory", "1g").getOrCreate()
+# 
+# 
+# df = spark.read.format("json").option("multiLine","true").load("C:\\Users\\sheel\\PycharmProjects\\pyspark\\Data\\races\\qualifying.json")
+# df = df.withColumnRenamed("constructorId","constructor_Id").withColumnRenamed("driverId","driver_Id").withColumnRenamed("qualifyId","qualify_Id").withColumnRenamed("raceId","race_Id").withColumn("ingestion_date",current_timestamp())
+# 
+# print(df.show())
 
 
 
@@ -28,3 +28,14 @@ print(df.show())
 # # print(dftest.show())
 
 
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("SparkTest").config("spark.driver.memory", "1g").getOrCreate()
+
+
+df = (spark.read.format("json").option("multiline","true").option("inferSchema","true").\
+      load("C:\\Users\\sheel\\PycharmProjects\\pyspark\\Data\\races\\qualifying.csv"))
+
+print(df.show())
